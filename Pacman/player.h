@@ -1,21 +1,25 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <QMainWindow>
+#include <QObject>
+#include <QGraphicsPixmapItem>
+#include <QPixmap>
+#include <QKeyEvent>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class Player; }
-QT_END_NAMESPACE
-
-class Player : public QMainWindow
+class Player : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
-
-public:
-    Player(QWidget *parent = nullptr);
-    ~Player();
-
 private:
-    Ui::Player *ui;
+    int row;
+    int column;
+    int data[10][10];
+public:
+    Player(int initialRow, int initialColumn, int d[12][12]);
+    void setRow(int newRow);
+    void setColumn(int newColumn);
+    int getRow();
+    int getColumn();
+private slots:
+    void keyPressEvent(QKeyEvent *event);
 };
 #endif // PLAYER_H

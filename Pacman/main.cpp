@@ -1,9 +1,11 @@
 #include <QApplication>
-#include<QGraphicsView>
-#include<QGraphicsScene>
-#include<QFile>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QFile>
 #include <QTextStream>
 #include <QGraphicsPixmapItem>
+#include <QPixmap>
+#include "player.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -47,15 +49,11 @@ int main(int argc, char *argv[])
 
        }
           
-   
-    
-    
-    
+   Player p(9,5,boardData);
+   scene.addItem(&p);
+   p.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
+   p.setFocus();
             
-    
-
-
-
    view.show();
     return a.exec();
 }
