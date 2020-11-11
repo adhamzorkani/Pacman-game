@@ -6,7 +6,7 @@ Player::Player(int initialRow, int initialColumn, int d[12][12])
         for (int j = 0; j < 12; j++)
             data[i][j] = d[i][j];
 
-    QPixmap playerImage("Tweety.png");
+    QPixmap playerImage("C:/Users/HP/CS2/PacMan/Pacman/PacMan.png");
     playerImage = playerImage.scaledToWidth(50);
     playerImage = playerImage.scaledToHeight(50);
     setPixmap(playerImage);

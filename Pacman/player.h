@@ -12,7 +12,7 @@ class Player : public QObject, public QGraphicsPixmapItem
 private:
     int row;
     int column;
-    int data[10][10];
+    int data[12][12];
 public:
     Player(int initialRow, int initialColumn, int d[12][12]);
     void setRow(int newRow);
