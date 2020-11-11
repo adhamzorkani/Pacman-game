@@ -6,6 +6,9 @@
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
 #include "player.h"
+#include "pellets.h"
+#include "powerpellets.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -49,11 +52,20 @@ int main(int argc, char *argv[])
 
        }
           
-   Player p(10,5,boardData);
+   Player p(9,5,boardData);
    scene.addItem(&p);
    p.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
    p.setFocus();
-            
+
+   Pellets P(5, 1);
+   scene.addItem(&P);
+
+   PowerPellets pp1(1,1), pp2(1 , 10), pp3(10, 1), pp4(10, 10);
+   scene.addItem(&pp1);
+   scene.addItem(&pp2);
+   scene.addItem(&pp3);
+   scene.addItem(&pp4);
+
    view.show();
     return a.exec();
 }

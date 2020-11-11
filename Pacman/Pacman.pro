@@ -17,10 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    player.cpp
+    pellets.cpp \
+    player.cpp \
+    powerpellets.cpp
 
 HEADERS += \
-    player.h
+    pellets.h \
+    player.h \
+    powerpellets.h
 
 FORMS += \
     player.ui

@@ -5,6 +5,10 @@
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
 #include <QKeyEvent>
+#include <QList>
+#include "pellets.h"
+#include "powerpellets.h"
+#include <QGraphicsScene>
 
 class Player : public QObject, public QGraphicsPixmapItem
 {

@@ -12,7 +12,7 @@ Player::Player(int initialRow, int initialColumn, int d[12][12])
     setPixmap(playerImage);
     row = initialRow;
     column = initialColumn;
-    setPos(50 + 50 * column, 50 + 50 * row);
+    setPos(200 + 50 * column, 200 + 50 * row);
 }
 void Player::setRow(int newRow)
 {
@@ -48,5 +48,24 @@ void Player::keyPressEvent(QKeyEvent *event)
     {
         column--;
     }
-    setPos(50 + 50 *column, 50 + 50 * row);
+    setPos(200 + 50 * column, 200 + 50 * row);
+
+    QList<QGraphicsItem*> items = collidingItems();
+    for (int i = 0; i < items.size(); i++)
+    {
+        if (typeid(*items[i]) == typeid(Pellets))
+        {
+            scene()->removeItem(items[i]);
+        }
+
+    }
+
+    QList<QGraphicsItem*> items2 = collidingItems();
+    for (int i = 0; i < items2.size(); i++)
+    {
+        if (typeid(*items2[i]) == typeid(PowerPellets))
+        {
+            scene()->removeItem(items2[i]);
+        }
+    }
 }
