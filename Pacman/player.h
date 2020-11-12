@@ -16,6 +16,7 @@ class Player : public QObject, public QGraphicsPixmapItem
 private:
     int row;
     int column;
+    int score;
     int data[12][12];
 public:
     Player(int initialRow, int initialColumn, int d[12][12]);
@@ -23,6 +24,7 @@ public:
     void setColumn(int newColumn);
     int getRow();
     int getColumn();
+    int getScore();
 private slots:
     void keyPressEvent(QKeyEvent *event);
 };

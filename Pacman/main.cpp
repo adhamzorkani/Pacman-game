@@ -66,6 +66,8 @@ int main(int argc, char *argv[])
    scene.addItem(&pp3);
    scene.addItem(&pp4);
 
+
+
    view.show();
     return a.exec();
 }

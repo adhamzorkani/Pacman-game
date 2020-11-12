@@ -2,6 +2,7 @@
 
 Player::Player(int initialRow, int initialColumn, int d[12][12])
 {
+    score = 0;
     for (int i = 0; i < 12; i++)
         for (int j = 0; j < 12; j++)
             data[i][j] = d[i][j];
@@ -30,6 +31,10 @@ int Player::getColumn()
 {
     return column;
 }
+int Player::getScore()
+{
+    return score;
+}
 void Player::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Up && data[row - 1][column] != -1)
@@ -43,10 +48,14 @@ void Player::keyPressEvent(QKeyEvent *event)
     else if (event->key() == Qt::Key_Right && data[row][column + 1] != -1)
     {
         column++;
+        if(data[row][column] == 41)
+            column = column - 11;
     }
     else if (event->key() == Qt::Key_Left && data[row][column - 1] != -1)
     {
         column--;
+        if(data[row][column] == 36)
+            column = column + 11;
     }
     setPos(200 + 50 * column, 200 + 50 * row);
 
@@ -56,6 +65,7 @@ void Player::keyPressEvent(QKeyEvent *event)
         if (typeid(*items[i]) == typeid(Pellets))
         {
             scene()->removeItem(items[i]);
+            score = score + 10;
         }
 
     }
@@ -66,6 +76,7 @@ void Player::keyPressEvent(QKeyEvent *event)
         if (typeid(*items2[i]) == typeid(PowerPellets))
         {
             scene()->removeItem(items2[i]);
+            score = score + 30;
         }
     }
 }
