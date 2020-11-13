@@ -2,7 +2,6 @@
 
 Player::Player(int initialRow, int initialColumn, int d[12][12])
 {
-    score = 0;
     for (int i = 0; i < 12; i++)
         for (int j = 0; j < 12; j++)
             data[i][j] = d[i][j];
@@ -30,10 +29,6 @@ int Player::getRow()
 int Player::getColumn()
 {
     return column;
-}
-int Player::getScore()
-{
-    return score;
 }
 void Player::keyPressEvent(QKeyEvent *event)
 {
@@ -65,7 +60,8 @@ void Player::keyPressEvent(QKeyEvent *event)
         if (typeid(*items[i]) == typeid(Pellets))
         {
             scene()->removeItem(items[i]);
-            score = score + 10;
+            //Score->PelletsScore();
+
         }
 
     }
@@ -76,7 +72,8 @@ void Player::keyPressEvent(QKeyEvent *event)
         if (typeid(*items2[i]) == typeid(PowerPellets))
         {
             scene()->removeItem(items2[i]);
-            score = score + 30;
+            //Score->PowerPelletsScore();
+
         }
     }
 }

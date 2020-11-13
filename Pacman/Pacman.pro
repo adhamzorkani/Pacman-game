@@ -19,12 +19,14 @@ SOURCES += \
     main.cpp \
     pellets.cpp \
     player.cpp \
-    powerpellets.cpp
+    powerpellets.cpp \
+    score.cpp
 
 HEADERS += \
     pellets.h \
     player.h \
-    powerpellets.h
+    powerpellets.h \
+    score.h
 
 FORMS += \
     player.ui

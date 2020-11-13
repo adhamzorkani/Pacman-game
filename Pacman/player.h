@@ -9,6 +9,7 @@
 #include "pellets.h"
 #include "powerpellets.h"
 #include <QGraphicsScene>
+#include "score.h"
 
 class Player : public QObject, public QGraphicsPixmapItem
 {
@@ -16,8 +17,8 @@ class Player : public QObject, public QGraphicsPixmapItem
 private:
     int row;
     int column;
-    int score;
     int data[12][12];
+    class score * Score;
 public:
     Player(int initialRow, int initialColumn, int d[12][12]);
     void setRow(int newRow);

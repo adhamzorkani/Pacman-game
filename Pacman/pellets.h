@@ -6,7 +6,8 @@
 class Pellets : public QGraphicsPixmapItem
 {
 public:
-    Pellets(int Row, int Column);
+    Pellets();
+    void setpellets(int row, int column);
 };
 
 #endif // PELLETS_H
