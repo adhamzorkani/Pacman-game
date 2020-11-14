@@ -11,5 +11,5 @@ Pellets::Pellets()
 
 void Pellets::setpellets(int Row, int Column)
 {
-    setPos(200+50*Column, 200+50*Row);
+    setPos(50+50*Column, 50+50*Row);
 }

@@ -3,25 +3,18 @@
 
 score::score(QGraphicsItem * parent) : QGraphicsTextItem(parent)
 {
-    Score = 0;
+    int Score = 0;
     setPlainText(QString("Score: ") + QString::number(Score));
     setDefaultTextColor(Qt::blue);
     setFont(QFont("times", 18));
 }
 
-void score::PowerPelletsScore()
+void score::PowerPelletsScore(int Score)
 {
-    Score = Score + 30;
     setPlainText(QString("Score: ") + QString::number(Score));
 }
 
-int score::getScore()
+void score::PelletsScore(int Score)
 {
-    return Score;
-}
-
-void score::PelletsScore()
-{
-    Score = Score + 10;
     setPlainText(QString("Score: ") + QString::number(Score));
 }

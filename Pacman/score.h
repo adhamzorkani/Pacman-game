@@ -6,13 +6,11 @@
 
 class score : public QGraphicsTextItem
 {
-private:
-    int Score;
+
 public:
     score(QGraphicsItem * parent = 0);
-    void PelletsScore();
-    void PowerPelletsScore();
-    int getScore();
+    void PelletsScore(int score);
+    void PowerPelletsScore(int score);
 };
 
 #endif // SCORE_H

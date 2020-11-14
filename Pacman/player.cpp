@@ -1,7 +1,11 @@
 #include "player.h"
 
-Player::Player(int initialRow, int initialColumn, int d[12][12])
+Player::Player(int initialRow, int initialColumn, int d[12][12] , score* S, lives * L, GameMode * M)
 {
+    Pscore = 0;
+    Score = S;
+    Lives = L;
+    mode = M;
     for (int i = 0; i < 12; i++)
         for (int j = 0; j < 12; j++)
             data[i][j] = d[i][j];
@@ -12,7 +16,9 @@ Player::Player(int initialRow, int initialColumn, int d[12][12])
     setPixmap(playerImage);
     row = initialRow;
     column = initialColumn;
-    setPos(200 + 50 * column, 200 + 50 * row);
+    setPos(50 + 50 * column, 50 + 50 * row);
+
+
 }
 void Player::setRow(int newRow)
 {
@@ -30,8 +36,16 @@ int Player::getColumn()
 {
     return column;
 }
+
+int Player::getScore()
+{
+    return Pscore;
+}
 void Player::keyPressEvent(QKeyEvent *event)
 {
+    /*timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),scene, SLOT(advance()));
+    timer->start(100);*/
     if (event->key() == Qt::Key_Up && data[row - 1][column] != -1)
     {
         row--;
@@ -43,7 +57,7 @@ void Player::keyPressEvent(QKeyEvent *event)
     else if (event->key() == Qt::Key_Right && data[row][column + 1] != -1)
     {
         column++;
-        if(data[row][column] == 41)
+        if(data[row][column] == 43)
             column = column - 11;
     }
     else if (event->key() == Qt::Key_Left && data[row][column - 1] != -1)
@@ -52,15 +66,16 @@ void Player::keyPressEvent(QKeyEvent *event)
         if(data[row][column] == 36)
             column = column + 11;
     }
-    setPos(200 + 50 * column, 200 + 50 * row);
+    setPos(50 + 50 * column, 50 + 50 * row);
 
     QList<QGraphicsItem*> items = collidingItems();
     for (int i = 0; i < items.size(); i++)
     {
         if (typeid(*items[i]) == typeid(Pellets))
         {
+            Pscore += 10;
+            Score->PelletsScore(Pscore);
             scene()->removeItem(items[i]);
-            //Score->PelletsScore();
 
         }
 
@@ -71,9 +86,10 @@ void Player::keyPressEvent(QKeyEvent *event)
     {
         if (typeid(*items2[i]) == typeid(PowerPellets))
         {
+            Pscore += 30;
+            Score->PowerPelletsScore(Pscore);
+            mode->changeMode();
             scene()->removeItem(items2[i]);
-            //Score->PowerPelletsScore();
-
         }
     }
 }

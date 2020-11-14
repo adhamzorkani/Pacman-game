@@ -10,6 +10,10 @@
 #include "powerpellets.h"
 #include <QGraphicsScene>
 #include "score.h"
+#include "lives.h"
+#include "gamemode.h"
+#include <QTimer>
+#include <QGraphicsScene>
 
 class Player : public QObject, public QGraphicsPixmapItem
 {
@@ -17,10 +21,14 @@ class Player : public QObject, public QGraphicsPixmapItem
 private:
     int row;
     int column;
+    int Pscore;
     int data[12][12];
-    class score * Score;
+    score* Score;
+    GameMode * mode;
+    lives * Lives;
+    QTimer * timer;
 public:
-    Player(int initialRow, int initialColumn, int d[12][12]);
+    Player(int initialRow, int initialColumn, int d[12][12] , score* Score, lives * Lives, GameMode * mode);
     void setRow(int newRow);
     void setColumn(int newColumn);
     int getRow();

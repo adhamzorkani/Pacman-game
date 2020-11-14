@@ -6,5 +6,5 @@ PowerPellets::PowerPellets(int Row, int Column)
     foodImage = foodImage.scaledToWidth(50);
     foodImage = foodImage.scaledToHeight(50);
     setPixmap(foodImage);
-    setPos(200+50*Column, 200+50*Row);
+    setPos(50+50*Column, 50+50*Row);
 }
