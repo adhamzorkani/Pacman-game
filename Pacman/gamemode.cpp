@@ -9,10 +9,5 @@ GameMode::GameMode(QGraphicsItem *parent)
 
 void GameMode::changeMode()
 {
-    int i = 0;
-    while(i != 10)
-    {
-        setPlainText(QString("INVINCIBLE"));
-        i++;
-    }
+    setPlainText(QString("INVINCIBLE"));
 }
