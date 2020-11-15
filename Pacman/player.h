@@ -12,6 +12,7 @@
 #include "score.h"
 #include "lives.h"
 #include "gamemode.h"
+#include "Ghost.h"
 #include <QTimer>
 #include <QGraphicsScene>
 
@@ -22,6 +23,7 @@ private:
     int row;
     int column;
     int Pscore;
+    int Plives;
     int data[12][12];
     score* Score;
     GameMode * mode;
@@ -34,6 +36,7 @@ public:
     int getRow();
     int getColumn();
     int getScore();
+    int getlives();
 private slots:
     void keyPressEvent(QKeyEvent *event);
 };

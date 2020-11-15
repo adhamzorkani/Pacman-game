@@ -3,8 +3,7 @@
 
 score::score(QGraphicsItem * parent) : QGraphicsTextItem(parent)
 {
-    int Score = 0;
-    setPlainText(QString("Score: ") + QString::number(Score));
+    setPlainText(QString("Score: 0"));
     setDefaultTextColor(Qt::blue);
     setFont(QFont("times", 18));
 }

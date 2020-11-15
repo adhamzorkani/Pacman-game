@@ -3,6 +3,7 @@
 Player::Player(int initialRow, int initialColumn, int d[12][12] , score* S, lives * L, GameMode * M)
 {
     Pscore = 0;
+    Plives = 3;
     Score = S;
     Lives = L;
     mode = M;
@@ -41,11 +42,12 @@ int Player::getScore()
 {
     return Pscore;
 }
+int Player::getlives()
+{
+    return Plives;
+}
 void Player::keyPressEvent(QKeyEvent *event)
 {
-    /*timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),scene, SLOT(advance()));
-    timer->start(100);*/
     if (event->key() == Qt::Key_Up && data[row - 1][column] != -1)
     {
         row--;
@@ -91,5 +93,16 @@ void Player::keyPressEvent(QKeyEvent *event)
             mode->changeMode();
             scene()->removeItem(items2[i]);
         }
+    }
+
+    QList<QGraphicsItem*> items3 = collidingItems();
+    for (int i = 0; i < items3.size(); i++)
+    {
+        if (typeid(*items3[i]) == typeid(Ghost))
+        {
+            Plives -= 1;
+            Lives->livesDecrease(Plives);
+        }
+
     }
 }

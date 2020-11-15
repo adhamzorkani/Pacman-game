@@ -11,8 +11,7 @@ private:
     int Lives;
 public:
     lives(QGraphicsItem * parent = 0);
-    void livesDecrease();
-    int getlives();
+    void livesDecrease(int L);
 };
 
 #endif // LIVES_H

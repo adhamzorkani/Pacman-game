@@ -14,6 +14,7 @@
 #include "score.h"
 #include "lives.h"
 #include "gamemode.h"
+#include "Ghost.h"
 
 int main(int argc, char *argv[])
 {
@@ -99,7 +100,21 @@ int main(int argc, char *argv[])
    scene.addItem(&pp3);
    scene.addItem(&pp4);
 
-   //if(Score->getScore() == 710 )
+   Ghost pinky ("Pinky","C:/Users/HP/CS2/PacMan/Pacman/pinky.png", 5,5,boardData);
+   scene.addItem(&pinky);
+   Ghost inky("Inky","C:/Users/HP/CS2/PacMan/Pacman/inky.png", 6,5,boardData);
+   scene.addItem(&inky);
+   Ghost clyde("Clyde","C:/Users/HP/CS2/PacMan/Pacman/clyde.png" ,6,6,boardData);
+   scene.addItem(&clyde);
+
+   /*if(p.getScore() >= 710 && p.getlives() > 0)
+   {
+       scene.removeItem(&p);
+       scene.removeItem(&pinky);
+       scene.removeItem(&inky);
+       scene.removeItem(&clyde);
+       scene.addText("YOU WON");
+   }*/
 
 
    view.show();
