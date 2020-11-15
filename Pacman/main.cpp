@@ -70,12 +70,6 @@ int main(int argc, char *argv[])
    mode = new GameMode();
    mode->setPos(mode->x()+300, mode->y());
    scene.addItem(mode);
-
-   Player p(9,5,boardData ,Score, Lives, mode);
-   scene.addItem(&p);
-   p.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
-   p.setFocus();
-
    Pellets P[60];
    int k = 0;
        for(int i = 1; i < 12; i++)
@@ -100,21 +94,20 @@ int main(int argc, char *argv[])
    scene.addItem(&pp3);
    scene.addItem(&pp4);
 
-   Ghost pinky ("Pinky","C:/Users/HP/CS2/PacMan/Pacman/pinky.png", 5,5,boardData);
-   scene.addItem(&pinky);
-   Ghost inky("Inky","C:/Users/HP/CS2/PacMan/Pacman/inky.png", 6,5,boardData);
-   scene.addItem(&inky);
-   Ghost clyde("Clyde","C:/Users/HP/CS2/PacMan/Pacman/clyde.png" ,6,6,boardData);
-   scene.addItem(&clyde);
+   Ghost * pinky;
+   pinky = new Ghost("Pinky","C:/Users/HP/CS2/PacMan/Pacman/pinky.png", 5,5,boardData);
+   scene.addItem(pinky);
+   Ghost * inky;
+   inky = new Ghost("Inky","C:/Users/HP/CS2/PacMan/Pacman/inky.png", 6,5,boardData);
+   scene.addItem(inky);
+   Ghost * clyde;
+   clyde = new Ghost("Clyde","C:/Users/HP/CS2/PacMan/Pacman/clyde.png" ,6,6,boardData);
+   scene.addItem(clyde);
 
-   /*if(p.getScore() >= 710 && p.getlives() > 0)
-   {
-       scene.removeItem(&p);
-       scene.removeItem(&pinky);
-       scene.removeItem(&inky);
-       scene.removeItem(&clyde);
-       scene.addText("YOU WON");
-   }*/
+   Player p(9,5,boardData ,Score, Lives, mode, inky, pinky, clyde);
+   scene.addItem(&p);
+   p.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
+   p.setFocus();
 
 
    view.show();

@@ -28,9 +28,11 @@ private:
     score* Score;
     GameMode * mode;
     lives * Lives;
-    QTimer * timer;
+    Ghost * I;
+    Ghost * P;
+    Ghost * C;
 public:
-    Player(int initialRow, int initialColumn, int d[12][12] , score* Score, lives * Lives, GameMode * mode);
+    Player(int initialRow, int initialColumn, int d[12][12] , score* Score, lives * Lives, GameMode * mode, Ghost * i, Ghost * p, Ghost * c);
     void setRow(int newRow);
     void setColumn(int newColumn);
     int getRow();

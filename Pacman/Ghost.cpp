@@ -17,10 +17,6 @@ QPixmap m(filename);
 m = m.scaledToWidth(50);
 m = m.scaledToHeight(50);
 setPixmap(m);
-/*timer = new QTimer();
-connect(timer, SIGNAL(timeout()),this, SLOT(moveghost()));
-timer->start(100);*/
-
 }
 
 void Ghost::setrow(int x)
@@ -45,24 +41,28 @@ QString Ghost::getghostname()
 }
 
 
- void Ghost::moveghost(int arr[12][12])
+ void Ghost::moveghost()
  {
-     int random = rand()%4+1;
-     if (random == 1 && arr[row - 1][column] != -1)
-     {
-         row--;
-     }
-     else if (random == 2 && arr[row + 1][column] != -1)
-     {
-         row++;
-     }
-     else if (random == 3 && arr[row][column + 1] != -1)
-     {
-         column++;
-     }
-     else if (random == 4 && arr[row][column - 1] != -1)
-     {
-         column--;
-     }
-     setPos(50 + 50 *column, 50 + 50 * row);
+         int random = rand()%4+1;
+         if (random == 1 && arr[row - 1][column] != -1)
+        {
+            row--;
+        }
+        else if (random == 2 && arr[row + 1][column] != -1)
+        {
+            row++;
+        }
+        else if (random == 3 && arr[row][column + 1] != -1)
+        {
+            column++;
+            if(arr[row][column] == 43)
+                column = column - 11;
+        }
+        else if (random == 4 && arr[row][column - 1] != -1)
+        {
+            column--;
+            if(arr[row][column] == 36)
+                column = column + 11;
+        }
+         setPos(50 + 50 *column, 50 + 50 * row);
  }
