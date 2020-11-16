@@ -10,6 +10,8 @@ class GameMode : public QGraphicsTextItem
 public:
     GameMode(QGraphicsItem * parent = 0);
     void changeMode();
+    void win();
+    void lose();
 };
 
 #endif // GAMEMODE_H

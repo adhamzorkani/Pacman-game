@@ -1,6 +1,6 @@
 #include "powerpellets.h"
 
-PowerPellets::PowerPellets(int Row, int Column)
+PowerPellets::PowerPellets(int Row, int Column)//draws the pellets
 {
     QPixmap foodImage ("C:/Users/HP/CS2/PacMan/Pacman/pellets");
     foodImage = foodImage.scaledToWidth(50);

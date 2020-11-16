@@ -2,8 +2,8 @@
 
 
 using namespace std;
-Ghost::Ghost(QString name, QString filename, int initialrow,int initialcolumn,int a[12][12])
-{
+Ghost::Ghost(QString name, QString filename, int initialrow,int initialcolumn,int a[12][12])//initiallises the positions the ghosts
+{                                                   // and draws them
     for(int i=0;i<12;i++)
         for(int j=0;j<12;j++)
             arr[i][j] = a[i][j];
@@ -41,7 +41,7 @@ QString Ghost::getghostname()
 }
 
 
- void Ghost::moveghost()
+ void Ghost::moveghost()// this function controls the movement of the ghosts
  {
          int random = rand()%4+1;
          if (random == 1 && arr[row - 1][column] != -1)

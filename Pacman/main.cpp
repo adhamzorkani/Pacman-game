@@ -1,13 +1,9 @@
 #include <QApplication>
 #include <QGraphicsView>
-#include <QGraphicsScene>
 #include <QFile>
 #include <QTextStream>
-#include <QGraphicsPixmapItem>
-#include <QPixmap>
 #include <QAbstractScrollArea>
 #include <QGraphicsTextItem>
-#include <QFont>
 #include "player.h"
 #include "pellets.h"
 #include "powerpellets.h"
@@ -16,18 +12,20 @@
 #include "gamemode.h"
 #include "Ghost.h"
 
+//before running change the directory of the files in the main and the classes: pellets, powerpellet and player.
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QGraphicsView view;
+    QGraphicsView view;// creating the view that will contain the scene
     view.setFixedSize(800,600);
     view.setWindowTitle("PacMan");
     QBrush brush(Qt::black);
     view.setBackgroundBrush(brush);
-    QGraphicsScene scene;
+    QGraphicsScene scene;//creating the scene that will contain the objects drawn
     view.setScene(&scene);
-    QFile file("C:/Users/HP/CS2/PacMan/Pacman/board.txt");
+    QFile file("C:/Users/HP/CS2/PacMan/Pacman/board.txt");//start of drawing board
    file.open(QIODevice::ReadOnly);
    int boardData[12][12];
    QTextStream stream(&file);
@@ -57,20 +55,20 @@ int main(int argc, char *argv[])
            scene.addItem(&boardImage[i][j]);
 
 
-       }
+       }//end of drawing the board
 
    score * Score;
    Score = new score();
-   scene.addItem(Score);
+   scene.addItem(Score);//drawing the score on the screen
    lives * Lives;
    Lives = new lives();
-   Lives->setPos(Lives->x(), Lives->y()+25);
-   scene.addItem(Lives);
+   Lives->setPos(Lives->x(), Lives->y()+25);//setting the position of lives
+   scene.addItem(Lives);//drawing the lives on the screen
    GameMode * mode;
    mode = new GameMode();
-   mode->setPos(mode->x()+300, mode->y());
-   scene.addItem(mode);
-   Pellets P[60];
+   mode->setPos(mode->x()+300, mode->y());//setting game mode text position
+   scene.addItem(mode);//drawing the game mode
+   Pellets P[60];// start of drawing pellets
    int k = 0;
        for(int i = 1; i < 12; i++)
            for(int j = 1; j < 12; j++)
@@ -86,15 +84,15 @@ int main(int argc, char *argv[])
                             k++;
                     }
 
-                    }
+          }// end of drawing pellets
 
-   PowerPellets pp1(1,1), pp2(1 , 10), pp3(10, 1), pp4(10, 10);
+   PowerPellets pp1(1,1), pp2(1 , 10), pp3(10, 1), pp4(10, 10);//drawing power pellets
    scene.addItem(&pp1);
    scene.addItem(&pp2);
    scene.addItem(&pp3);
    scene.addItem(&pp4);
 
-   Ghost * pinky;
+   Ghost * pinky;//start of adding ghosts
    pinky = new Ghost("Pinky","C:/Users/HP/CS2/PacMan/Pacman/pinky.png", 5,5,boardData);
    scene.addItem(pinky);
    Ghost * inky;
@@ -102,13 +100,12 @@ int main(int argc, char *argv[])
    scene.addItem(inky);
    Ghost * clyde;
    clyde = new Ghost("Clyde","C:/Users/HP/CS2/PacMan/Pacman/clyde.png" ,6,6,boardData);
-   scene.addItem(clyde);
+   scene.addItem(clyde);// end of adding ghost
 
-   Player p(9,5,boardData ,Score, Lives, mode, inky, pinky, clyde);
+   Player p(9,5,boardData ,Score, Lives, mode, inky, pinky, clyde);//drawing pacman
    scene.addItem(&p);
    p.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
    p.setFocus();
-
 
    view.show();
     return a.exec();

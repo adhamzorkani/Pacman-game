@@ -2,13 +2,11 @@
 #define GHOSTS_H
 
 #include<QGraphicsPixmapItem>
-#include <QTimer>
 #include <QRandomGenerator>
 #include <iostream>
 #include <string>
 #define _USE_MATH_DEFINES
 #include <math.h>
-#include <Windows.h>
 
 class Ghost : public QGraphicsPixmapItem, QObject
 {
