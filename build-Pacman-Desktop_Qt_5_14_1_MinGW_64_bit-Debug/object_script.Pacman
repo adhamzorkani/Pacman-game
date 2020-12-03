@@ -1,0 +1,10 @@
+Ghost.o
+gamemode.o
+lives.o
+main.o
+pellets.o
+player.o
+powerpellets.o
+score.o
+moc_Ghost.o
+moc_player.o
