@@ -1,7 +1,6 @@
 #ifndef LIVES_H
 #define LIVES_H
 
-
 #include <QGraphicsTextItem>
 #include <QFont>
 

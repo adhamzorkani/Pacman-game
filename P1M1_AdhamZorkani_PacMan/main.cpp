@@ -13,6 +13,8 @@
 #include "gamemode.h"
 #include "Ghost.h"
 bool Ghost::invincible = false;
+int Player::currentCol = 0;
+int Player::currentRow = 0;
 
 //before running change the directory of the files in the main and the classes: pellets, powerpellet and player.
 
@@ -21,7 +23,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QGraphicsView view;// creating the view that will contain the scene
-    view.setFixedSize(800,600);
+    view.setFixedSize(800,700);
     view.setWindowTitle("PacMan");
     QBrush brush(Qt::black);
     view.setBackgroundBrush(brush);
@@ -111,13 +113,13 @@ int main(int argc, char *argv[])
 
    QTimer * timer = new QTimer;
    timer->connect(timer, SIGNAL(timeout()),pinky, SLOT(moveghost()));
-   timer->start(200);
+   timer->start(220);
    QTimer * timer2 = new QTimer;
    timer2->connect(timer2, SIGNAL(timeout()),inky, SLOT(moveghost()));
-   timer2->start(200);
+   timer2->start(220);
    QTimer * timer3 = new QTimer;
    timer3->connect(timer3, SIGNAL(timeout()),clyde, SLOT(moveghost()));
-   timer3->start(200);
+   timer3->start(220);
    QTimer * timer4 = new QTimer;
    timer4->connect(timer4, SIGNAL(timeout()), &p, SLOT(movePlayer()));
    timer4->start(200);

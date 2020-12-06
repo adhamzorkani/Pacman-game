@@ -7,6 +7,8 @@
 #include <string>
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include<vector>
+#include "player.h"
 
 class Ghost : public QObject, public QGraphicsPixmapItem
 {
@@ -15,19 +17,17 @@ private:
     QString ghostname;
     int row;
     int column;
-    int move;
     int arr[12][12];
     int dik[70][70] ={ 0 };
 public:
-    bool ghostmoving;
+    static bool invincible;
     Ghost (QString name, QString filename,int row, int column,int a[12][12]);
     void setrow(int);
     void setcolumn(int);
     int getrow();
     int getcolumn();
     QString getghostname();
-    static bool invincible;
-    int dijkstra(int a[70][70], int a2[12][12]);
+    QVector<QVector<int>> Dijkstra(int dik[70][70], int startNode);
 public slots:
     void moveghost();
 };

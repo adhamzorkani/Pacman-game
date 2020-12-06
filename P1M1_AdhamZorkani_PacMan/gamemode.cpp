@@ -10,6 +10,10 @@ void GameMode::changeMode()//changes the game mode
 {
     setPlainText(QString("INVINCIBLE"));
 }
+void GameMode::BackToNormal()
+{
+    setPlainText(QString("Normal"));
+}
 void GameMode::win()//outputs win if the player wins
 {
     setPlainText(QString("YOU WON!!!!"));

@@ -7,7 +7,7 @@ Player::Player(int initialRow, int initialColumn, int d[12][12] , score* S, live
     Score = S;
     Lives = L;
     mode = M;
-    direction = 'r';
+    direction = ' ';
     for (int i = 0; i < 12; i++)
         for (int j = 0; j < 12; j++)
             data[i][j] = d[i][j];
@@ -18,6 +18,8 @@ Player::Player(int initialRow, int initialColumn, int d[12][12] , score* S, live
     setPixmap(playerImage);
     row = initialRow;
     column = initialColumn;
+    currentCol = initialColumn;
+    currentRow = initialRow;
     setPos(50 + 50 * column, 50 + 50 * row);
 
 
@@ -72,22 +74,30 @@ void Player::movePlayer()
     if (direction == 'u' && data[row - 1][column] != -1)
     {
         row--;
+        currentRow = row;
+        currentCol = column;
     }
     else if (direction == 'd' && data[row + 1][column] != -1)
     {
         row++;
+        currentRow = row;
+        currentCol = column;
     }
     else if (direction == 'r' && data[row][column + 1] != -1)
     {
         column++;
         if(data[row][column] == 43)
             column = column - 11;
+        currentRow = row;
+        currentCol = column;
     }
     else if (direction == 'l' && data[row][column - 1] != -1)
     {
         column--;
         if(data[row][column] == 36)
             column = column + 11;
+        currentRow = row;
+        currentCol = column;
     }
     setPos(50 + 50 * column, 50 + 50 * row);
 
@@ -109,6 +119,7 @@ void Player::movePlayer()
             Pscore += 30;
             Score->PowerPelletsScore(Pscore);//outputs the new score
             mode->changeMode();//changes the gamemode to invincible when pacman eats a pellet
+            Ghost::invincible = true;
             scene()->removeItem(items[i]);//removess the powerpellets when they collide with pacman
             if(Pscore == 710)
             {
@@ -117,9 +128,15 @@ void Player::movePlayer()
         }
         if (typeid(*items[i]) == typeid(Ghost))
         {
-            Ghost::invincible = true;
+            if(Ghost::invincible == false)
+            {
             Plives -= 1;
             Lives->livesDecrease(Plives);// outputs the new lives
+            setRow(9);
+            setColumn(5);
+            }
+            Ghost::invincible = false;
+            mode->BackToNormal();
             if(Plives == 0)
             {
                 mode->lose();// if the lives became 0 it outputs you lost

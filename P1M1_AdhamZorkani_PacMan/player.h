@@ -30,6 +30,8 @@ private:
     GameMode * mode;
     lives * Lives;
 public:
+    static int currentRow;
+    static int currentCol;
     Player(int initialRow, int initialColumn, int d[12][12] , score* Score, lives * Lives, GameMode * mode);
     void setRow(int newRow);
     void setColumn(int newColumn);
